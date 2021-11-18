@@ -1,0 +1,40 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    // largest word in a palaindrome
+    int n;
+    cin>>n;
+    cin.ignore();
+    char arr[n+1];
+    cin >> arr;
+    cin.getline(arr,n);
+    cin.ignore();
+    int i=0;
+    int cur_len=0,max_len=0;
+    int st=0, maxst=0;
+    while(1){
+        if(arr[i]==' ' || arr[i]=='\0'){
+            if(cur_len>max_len){
+                max_len= cur_len;
+                maxst=st;
+            }
+            cur_len=0;
+            st=i+1;
+        }
+        else{
+            cur_len++;
+        }
+        if(arr[i]=='\0'){
+            break;
+        }
+        i++;
+    }
+    cout<<max_len<<endl;
+    for(int i=0;i<max_len;i++){
+        cout<<arr[i+maxst];
+    }
+    return 0;
+}
